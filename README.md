@@ -19,8 +19,10 @@ Now navigate to http://localhost:8998
 
 **Full Example** [abdennour/demo-radius-reverse-proxy](https://github.com/abdennour/demo-radius-reverse-proxy/blob/master/README.md)
 
-# Documentation Env Vars
+# Documentation
 
+
+**container environment variables***
 |   env var       | required? |  default | values  |  description |
 |------           |---|---|---|---|
 | RADIUS_SERVER_SECRET    | yes  | - |   |   |
@@ -39,6 +41,15 @@ Now navigate to http://localhost:8998
 
 
 > Find Uptodate env vars list [here](https://github.com/abdennour/dockerfiles/blob/master/docker-images/radius-auth-proxy/fry#L5-L19)
+
+**Volumes**
+
+Two files can be provided under the following path:
+
+- `/opt/assets/login.html`: If `UI_AUTH_TYPE` en var equals `form` and you want a customized login form you can provide the login page under this path. However, you must comply with the form [here](https://httpd.apache.org/docs/trunk/mod/mod_auth_form.html)
+
+- `/opt/assets/httpd.conf`: As this software is based on Apach, Env vars above are used to build the final Apache configuration file (`httpd.conf`). 
+However if these env vars does not respond to your need, you can provide `httpd.conf` under `/opt/assets` and the container will consider it and override everything else.
 
 # References
 
